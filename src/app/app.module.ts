@@ -27,6 +27,7 @@ import { RegisterComponent } from './components/register/register.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     
+    
 
     ],
   providers: [],
