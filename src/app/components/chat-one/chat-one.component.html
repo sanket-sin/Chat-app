@@ -1,0 +1,104 @@
+<main class="subscription">
+    <div class="HomeMainDiv">
+        <div class="RightSideDiv">
+            <!-- <div class="row">
+                <div class="col-sm-12">
+                    <div class="propertyInfoHeading">
+                        <h3>Chat With Me</h3>
+                    </div>
+                </div>
+            </div> -->
+            <div class="repair_tickets">
+                <div class="repair_part_image"><img src="/assets/images/lets_talk_dei-1200x.jpeg" alt=""></div>
+                <div class="repair_part_detail">
+                    
+                  <!-- <div class="row">
+                        <div class="col-md-8">
+                            <h2>Living Room’s AC repair</h2>
+                            <p><b>Ticket Number : </b>1546566</p>
+                            <p><b>Address :  </b>167th St, The Bronx, NY</p>
+                        </div>
+                        <div class="col-md-4"> 
+                            <button type="button" class="btn pending_btn">Pending</button>
+                        </div>
+                    </div>	
+                </div> -->
+
+
+              
+                <div class="row">
+                    <div class="col-md-12" >
+                        <div class="chat_window">
+                            <div class="chat-inner">
+                                <div *ngFor="let chat of messageData">
+                                    <!-- {{messageData|json}} -->
+                                    <div class="sender_div" *ngIf="chat.rec == this.receiver_ids">
+                                        <!-- <p>{{chat.sender_name}}</p> -->
+                                        <p class="text_window" *ngIf="chat.message != null">
+                                            {{ chat.message }}
+                                            <span>{{
+                                                chat?.timestamp?.toDate() | date : "h:mm a"
+                                                }}</span>
+                                        </p>
+                                        
+                                        <p class="text_window" *ngIf="chat.message == null">
+                                            <img [src]="chat.fileUrl" />
+                                            <span>{{
+                                                chat?.timestamp?.toDate() | date : "h:mm a"
+                                                }}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- sender_div -->
+                                    <div class="Reciever_div" *ngIf="chat.rec != this.receiver_ids">
+                                        <!-- <p>{{chat.sender_name}}</p> -->
+                                        <p class="text_window" *ngIf="chat.message != '' ">
+                                            {{ chat.message }}
+                                            <span>{{
+                                                chat?.timestamp?.toDate() | date : "h:mm a"
+                                                }}</span>
+                                        </p>
+
+                                        <p class="text_window" *ngIf="chat.message == '' ">
+                                            <img [src]="chat.fileUrl" />
+                                            <span>{{
+                                                chat?.timestamp?.toDate() | date : "h:mm a"
+                                                }}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- Rciever_div -->
+                                </div>
+                                <div #endOfChat style="visibility:hidden">
+                                    h 
+                                </div>
+                            </div>
+
+                            <div class="type_window" style="width: 70%;">
+                                <form [formGroup]="form">
+                                    <textarea maxlength="512" (keyup.enter)="sendChat()" type="text" [readOnly]="path" 
+                                    class="form-control type-input" formControlName="message" placeholder="Write your message..." 
+                                    id="exampleFormControlTextarea1" rows="2"></textarea>
+                                    <a class="attach_icon">
+                                        <input id="file" type="file" formControlName="fileUrl" [readonly] (change)="upload($event)"
+                                            hidden accept="image/png,image/svg, image/gif, image/jpeg" />
+                                        <label style="cursor: pointer" for="file"><img
+                                                src="/assets/images/attach.png" /></label></a>
+                                    <button type="button" class="btn send" [disabled]="loader" (click)=sendChat()>
+                                        <div *ngIf="this.loader == true" class="spinner-border" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                        Send <img src="/assets/images/send.png" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div><!-- chat_window -->
+                    </div>
+                </div><!-- row -->
+            </div><!-- repair_tickets -->
+        </div><!-- RightSideDiv -->
+    </div><!-- HomeMainDiv -->
+    
+    
+    
+
